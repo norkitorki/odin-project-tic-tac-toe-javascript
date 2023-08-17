@@ -35,7 +35,7 @@ const Gameboard = (() => {
   }
 
   function toString() {
-    console.log(_board.map(row => row.join(' ')).join("\n"));
+    return _board.map(row => row.join(' ')).join("\n");
   }
 
   return {
