@@ -27,9 +27,12 @@ const Player = (name, marker, color, parent = document.body, options = {}) => {
     obj.color = this.value;
   }
 
-  function randomPlacement(fields) {
-    let index = Math.round(Math.random() * (8 - 0) + 0);
-    return fields[index].dataset.player ? randomPlacement(fields) : fields[index];
+  // Computer specific functionality
+
+  function randomPlacement(emptyFields) {
+    if (emptyFields.length === 1) return emptyFields[0];
+    let index = Math.round(Math.random() * (emptyFields.length - 1) + 0);
+    return emptyFields[index];
   }
 
   return obj;
