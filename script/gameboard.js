@@ -131,3 +131,5 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
 
   return obj;
 })(p1, p2, comp);
+
+Gameboard.reset();
