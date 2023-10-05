@@ -4,7 +4,8 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
         _gameBoard   = document.querySelector('.game-board'),
         _toggleComp  = document.querySelector('.toggle-computer');
 
-  let _board,
+  let obj = { reset, render, gameOver, toArray, toString, emptyFields, newGameState },
+      _board,
       _turn = 1,
       _currentPlayer = playerOne,
       _idlePlayer = playerTwo,
@@ -126,11 +127,5 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
     return _board.map(row => row.join(' ')).join("\n");
   }
 
-  return {
-    reset,
-    render,
-    gameOver,
-    toArray,
-    toString
-  }
+  return obj;
 })(p1, p2, comp);
