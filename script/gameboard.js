@@ -91,6 +91,7 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
     if (computer) {
       _compActive = this.checked ? true : false;
       _currentPlayer = playerOne;
+      _idlePlayer = _idlePlayer === playerTwo ? computer : playerTwo;
       reset();
     }
   }
