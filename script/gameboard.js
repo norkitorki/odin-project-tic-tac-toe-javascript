@@ -72,9 +72,11 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
   }
 
   function _computerTurn() {
-    if (_compActive && (_currentPlayer === playerTwo || _currentPlayer === computer)) {
+    if (_compActive && _currentPlayer !== playerOne) {
       _currentPlayer = computer;
-      computer.randomPlacement(_gameBoard.children).click();
+      let pos;
+      _turn === 1 || _turn === 9 ? pos = computer.randomPlacement(emptyFields()) : computer.minMax(obj, playerOne, computer);
+      _findField(pos || computer.nextMove).click();
     }
   }
 
