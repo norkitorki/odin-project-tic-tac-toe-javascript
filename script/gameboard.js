@@ -51,15 +51,14 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
     }
   }
 
-  function gameOver() {
+  function gameOver(player = _currentPlayer) {
     const patterns = [
       ['00', '01', '02'], ['10', '11', '12'], ['20', '21', '22'],
       ['00', '10', '20'], ['01', '11', '21'], ['02', '12', '22'],
       ['00', '11', '22'], ['02', '11', '20']
     ];
 
-    const playerW = patterns.find(pattern => pattern.every(pos => Number(_findField(pos).dataset.player) === _playerIndex(_currentPlayer)));
-    return playerW || _turn === 9 || false;
+    return patterns.find(pattern => pattern.every(pos => _board[pos[0]][pos[1]] === player.marker)) || _turn === 9;
   }
 
   function _swapPlayer() {
