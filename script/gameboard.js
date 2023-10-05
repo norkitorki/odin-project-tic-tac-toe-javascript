@@ -7,6 +7,7 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
   let _board,
       _turn = 1,
       _currentPlayer = playerOne,
+      _idlePlayer = playerTwo,
       _gameActive = false,
       _compActive = false;
 
@@ -62,7 +63,7 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
   }
 
   function _swapPlayer() {
-    _currentPlayer = _currentPlayer === playerOne ? playerTwo : playerOne;
+    [_currentPlayer, _idlePlayer] = [_idlePlayer, _currentPlayer];
   }
 
   function _annouceTurn() {
