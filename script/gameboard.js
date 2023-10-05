@@ -109,6 +109,14 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
     return [playerOne, playerTwo, computer].indexOf(player);
   }
 
+  function emptyFields() {
+    return ['00', '01', '02', '10', '11', '12', '20', '21', '22'].filter(pos => toArray()[pos[0]][pos[1]] === ' ');
+  }
+
+  function newGameState(position, marker) {
+    if (marker.length === 1) return _board[position[0]][position[1]] = marker;
+  }
+
   function toArray() {
     return _board;
   }
