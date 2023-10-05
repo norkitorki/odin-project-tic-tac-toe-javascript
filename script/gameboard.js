@@ -77,10 +77,10 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
     }
   }
 
-  function _handleGameEnd(res) {
+  function _handleGameEnd(result) {
     _gameActive = false;
-    if (typeof res === 'object') _highlightWinningPattern(res);
-    _display.textContent = `${res === true ? 'The game ended in a draw.' : `${_currentPlayer.name} has won the game!`}`;
+    if (typeof result === 'object') _highlightWinningPattern(result);
+    _display.textContent = `${result === true ? 'The game ended in a draw.' : `${_currentPlayer.name} has won the game!`}`;
   }
 
   function _highlightWinningPattern(positions) {
