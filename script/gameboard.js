@@ -87,7 +87,7 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
   }
 
   function _highlightWinningPattern(positions) {
-    positions.forEach(pos => _findField(pos).style.border = '5px solid #2b9b09');
+    positions.forEach(pos => _findField(pos).style.borderColor = '#2b9b09');
   }
 
   function _toggleComputer() {
