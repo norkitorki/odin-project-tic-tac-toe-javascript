@@ -1,8 +1,9 @@
 const Gameboard = ((playerOne, playerTwo, computer) => {
-  const _display     = document.querySelector('.display'),
-        _resetButton = document.querySelector('.reset-game'),
-        _gameBoard   = document.querySelector('.game-board'),
-        _toggleComp  = document.querySelector('.toggle-computer');
+  const _display            = document.querySelector('.display'),
+        _resetButton        = document.querySelector('.reset-game'),
+        _gameBoard          = document.querySelector('.game-board'),
+        _toggleComp         = document.querySelector('.toggle-computer'),
+        _toggleCompHardMode = document.querySelector('.toggle-hardmode');
 
   let obj = { reset, render, gameOver, toArray, toString, emptyFields, newGameState },
       _board,
@@ -10,11 +11,13 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
       _currentPlayer = playerOne,
       _idlePlayer = playerTwo,
       _gameActive = false,
-      _compActive = false;
+      _compActive = false,
+      _hardMode = false;
 
   _resetButton.addEventListener('click', reset);
   _gameBoard.addEventListener('click', _placeMarker);
   _toggleComp.addEventListener('change', _toggleComputer);
+  _toggleCompHardMode.addEventListener('change', _toggleHardMode);
 
   function reset() {
     _gameActive = true;
@@ -74,9 +77,8 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
 
   function _computerTurn() {
     if (_compActive && _currentPlayer !== playerOne) {
-      _currentPlayer = computer;
       let pos;
-      _turn === 1 || _turn === 9 ? pos = computer.randomPlacement(emptyFields()) : computer.minMax(obj, playerOne, computer);
+      _hardMode && _turn > 1 && _turn < 9 ? computer.minMax(obj, playerOne, computer) : pos = computer.randomPlacement(emptyFields());
       _findField(pos || computer.nextMove).click();
     }
   }
@@ -103,6 +105,10 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
       _idlePlayer = _idlePlayer === playerTwo ? computer : playerTwo;
       reset();
     }
+  }
+
+  function _toggleHardMode() {
+    _hardMode = computer && this.checked ? true : false;
   }
 
   function _findField(position) {
