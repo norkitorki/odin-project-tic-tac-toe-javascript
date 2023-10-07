@@ -36,6 +36,7 @@ button {
 button:hover { background-color: #003152 }
 
 .game-board {
+  padding: 1rem;
   display: grid;
   grid-template-columns: repeat(3, 150px);
   grid-template-rows: repeat(3, 150px);
@@ -43,7 +44,7 @@ button:hover { background-color: #003152 }
 
 .game-board > a {
   color: #ffffff;
-  border: 3px solid #1d8fdb;
+  border: 1px solid #1d8fdb;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,6 +52,11 @@ button:hover { background-color: #003152 }
   text-decoration: none;
   transition: background-color .2s;
 }
+
+a[data-position="00"], a[data-position="01"], a[data-position="02"] { border-top: none; }
+a[data-position="00"], a[data-position="10"], a[data-position="20"] { border-left: none; }
+a[data-position="02"], a[data-position="12"], a[data-position="22"] { border-right: none; }
+a[data-position="20"], a[data-position="21"], a[data-position="22"] { border-bottom: none; }
 
 .game-board > a:hover,
 .game-board > a:focus { background-color: #031c2c; }
