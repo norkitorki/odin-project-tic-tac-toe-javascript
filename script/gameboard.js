@@ -27,6 +27,7 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
   }
 
   function render() {
+    _display.style.color = '';
     _gameBoard.innerHTML = '';
     _board.forEach((row, rank) => {
       row.forEach((marker, file) => _gameBoard.appendChild(_createFieldNode(marker, rank, file)));
@@ -82,8 +83,13 @@ const Gameboard = ((playerOne, playerTwo, computer) => {
 
   function _handleGameEnd(result) {
     _gameActive = false;
-    if (typeof result === 'object') _highlightWinningPattern(result);
-    _display.textContent = `${result === true ? 'The game ended in a draw.' : `${_currentPlayer.name} has won the game!`}`;
+    if (typeof result === 'object') {
+      _highlightWinningPattern(result);
+      _display.textContent = `${_currentPlayer.name} has won the game!`;
+      _display.style.color = _currentPlayer.color;
+    } else {
+      _display.textContent = 'The game ended in a draw.';
+    }
   }
 
   function _highlightWinningPattern(positions) {
