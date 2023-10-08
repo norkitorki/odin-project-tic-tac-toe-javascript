@@ -45,7 +45,7 @@ button:hover { background-color: #003152 }
 
 .game-board > a {
   color: #ffffff;
-  border: 1px solid #1d8fdb;
+  border: 1px solid #0e74b331;
   display: flex;
   justify-content: center;
   align-items: center;
