@@ -67,6 +67,6 @@ const Player = (name, marker, color, parent = document.body, options = {}) => {
 
 const playersContainer = document.getElementById('players-container');
 
-const p1   = Player('Player 1', 'XX', '#ffffff', playersContainer);
+const p1   = Player('Player 1', 'X', '#ffffff', playersContainer);
 const p2   = Player('Player 2', 'O', '#ec0000', playersContainer);
 const comp = Player('Computer', 'C', '#c77905', playersContainer, { computer: true });
