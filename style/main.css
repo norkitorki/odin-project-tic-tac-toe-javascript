@@ -80,6 +80,8 @@ label { font-weight: bold; }
   gap: 1rem;
 }
 
+.change-name, .change-marker { font-size: 0.75rem; }
+
 .color-picker {
   display: inline-block;
   width: 1.5rem;
