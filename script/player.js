@@ -1,6 +1,7 @@
 const Player = (name, marker, color, parent = document.body, options = {}) => {
   const template    = document.getElementById('player-template').content.cloneNode(true),
         playerName  = template.querySelector('.player-name'),
+        playerMarker = template.querySelector('.player-marker'),
         colorPicker = template.querySelector('.color-picker'),
         obj         = { name, marker: marker[0], color };
   
@@ -15,23 +16,26 @@ const Player = (name, marker, color, parent = document.body, options = {}) => {
   colorPicker.value = color;
   parent.appendChild(template);
 
-  function _nameFormat() {
-    return `${obj.name} (${obj.marker})`;
+  function _updatePlayer() {
+    playerName.textContent   = obj.name;
+    playerMarker.textContent = `(${obj.marker})`;
+    playerMarker.style.color = obj.color;
   }
 
   function _updateName(promptUser = true) {
     if (promptUser) obj.name = prompt(`Please choose a new name for ${obj.name}:`) || obj.name;
-    playerName.textContent = _nameFormat();
+    _updatePlayer();
   }
 
   function _updateMarker() {
     const newMarker = prompt(`Please choose a new marker for ${obj.name}:`) || obj.marker;
     obj.marker = newMarker[0];
-    playerName.textContent = _nameFormat();
+    _updatePlayer();
   }
 
   function _updateColor() {
     obj.color = this.value;
+    _updatePlayer();
   }
 
   // Computer specific functionality
