@@ -7,11 +7,11 @@ const Player = (name, marker, color, parent = document.body, options = {}) => {
   if (marker.length > 1 ) console.warn(`${name}'s marker has been truncated to the first character`);
   if (options.computer) Object.assign(obj, { randomPlacement, minMax });
 
-  _updateName(false);
-  colorPicker.value = color;
-
   template.querySelector('.change-name').addEventListener('click', _updateName);
   colorPicker.addEventListener('change', _updateColor);
+
+  _updateName(false);
+  colorPicker.value = color;
   parent.appendChild(template);
 
   function _nameFormat() {
