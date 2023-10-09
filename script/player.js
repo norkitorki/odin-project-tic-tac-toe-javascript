@@ -8,6 +8,7 @@ const Player = (name, marker, color, parent = document.body, options = {}) => {
   if (options.computer) Object.assign(obj, { randomPlacement, minMax });
 
   template.querySelector('.change-name').addEventListener('click', _updateName);
+  template.querySelector('.change-marker').addEventListener('click', _updateMarker);
   colorPicker.addEventListener('change', _updateColor);
 
   _updateName(false);
@@ -20,6 +21,12 @@ const Player = (name, marker, color, parent = document.body, options = {}) => {
 
   function _updateName(promptUser = true) {
     if (promptUser) obj.name = prompt(`Please choose a new name for ${obj.name}:`) || obj.name;
+    playerName.textContent = _nameFormat();
+  }
+
+  function _updateMarker() {
+    const newMarker = prompt(`Please choose a new marker for ${obj.name}:`) || obj.marker;
+    obj.marker = newMarker[0];
     playerName.textContent = _nameFormat();
   }
 
